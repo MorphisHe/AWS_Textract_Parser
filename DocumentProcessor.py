@@ -36,12 +36,15 @@ class SingleDocumentProcessor:
     _pageNum2BytesArr = {} # dict mapping page number to corresponding bytes array
     _image_mode = False # indicating whether or not we dealing with image input
 
-    def __init__(self, s3_obj, process_type):
+    def __init__(self, s3_bucket_name, s3_doc_name, process_type):
         if process_type in [ProcessType.DETECTION, ProcessType.ANALYSIS]:
             self.process_type = process_type
         else:
             raise Exception(
                 f"Invalid Process Type: {process_type}\nUse only: {ProcessType.DETECTION}, {ProcessType.ANALYSIS}")
+
+        s3_connection = boto3.resource('s3')
+        s3_obj = s3_connection.Object(s3_bucket_name, s3_doc_name)
         doc_name = s3_obj.key
         doc_extension = doc_name.split(".")[-1].lower()
         print(f"Starting Processing Document: {doc_name}")
