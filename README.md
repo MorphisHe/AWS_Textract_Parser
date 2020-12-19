@@ -7,6 +7,7 @@
             - takes only pdf as input
             - async call, not real time
             - you can pass in list of s3_doc_name and process_type_list for each document to process all documents at same time
+    
     - TextractParser: parsing AWS Textract response
         - Document: the top level class
         - parse_para: this parameter for Document class.
