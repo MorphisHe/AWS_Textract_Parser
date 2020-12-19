@@ -1,2 +1,4 @@
 .vscode
 /parser_env
+.DS_Store
+__pycache__/
