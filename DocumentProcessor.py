@@ -37,6 +37,15 @@ class SingleDocumentProcessor:
     _image_mode = False # indicating whether or not we dealing with image input
 
     def __init__(self, s3_bucket_name, s3_doc_name, process_type):
+        '''
+        Parameters:
+        =================
+        s3_bucket_name: name of the s3 bucket
+
+        s3_doc_name: name of s3 document
+
+        process_type: process type of the s3_documents
+        '''
         if process_type in [ProcessType.DETECTION, ProcessType.ANALYSIS]:
             self.process_type = process_type
         else:
